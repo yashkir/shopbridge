@@ -42,6 +42,7 @@ function AddItem({ doCreateItem }) {
 }
 
 function EditItem({ item, doUpdateItem }) {
+  const [active, setActive] = useState(false);
   const [formData, setFormData] = useState({
     name: item.name,
     price: item.price,
@@ -52,6 +53,14 @@ function EditItem({ item, doUpdateItem }) {
     
     // TODO validate here
     doUpdateItem(item.id, formData);
+
+    setActive(false);
+  }
+
+  if (!active) {
+    return (
+      <button onClick={() => setActive(!active)}>Edit</button>
+    );
   }
 
   return (
@@ -72,6 +81,30 @@ function EditItem({ item, doUpdateItem }) {
       />
       <button type="submit">Update</button>
     </form>
+  );
+}
+
+function DeleteItem({ item, doDeleteItem }) {
+  const [active, setActive] = useState(false);
+
+  if (!active) {
+    return (
+      <button onClick={() => setActive(!active)}>X</button>
+    );
+  }
+
+  return (
+    <div>
+      Delete this item?
+      <button onClick={() => {
+        doDeleteItem(item.id);
+        setActive(false);
+      }}
+      >
+          DELETE
+      </button>
+      <button onClick={() => setActive(false)}>cancel</button>
+    </div>
   );
 }
 
@@ -117,7 +150,10 @@ function Inventory() {
           <br />
           {item.price}
           <br />
-          <button onClick={(e) => doDeleteItem(item.id)}>X</button>
+          <DeleteItem 
+            item={item}
+            doDeleteItem={doDeleteItem}
+          />
           <EditItem 
             item={item}
             doUpdateItem={doUpdateItem}
