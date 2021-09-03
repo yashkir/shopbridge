@@ -1,0 +1,38 @@
+.tableWrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: left;
+}
+
+.table {
+  table-layout: fixed;
+  width: 350px;
+  padding: 25px;
+  border-radius: 15px;
+  background-color: lightgrey;
+}
+
+.table td {
+  overflow: hidden;
+}
+
+.table thead {
+  font-weight: bold;
+}
+
+.col1 {
+  width: 200px;
+}
+
+.col2 {
+  width: 100px;
+}
+
+.col3 {
+  width: 100px;
+}
+
+.col4 {
+  width: 200px;
+}

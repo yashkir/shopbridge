@@ -5,8 +5,9 @@ import {
   updateItem,
   deleteItem
 } from '../../services/api-service';
-import { AddItem } from "../AddItem/AddItem";
-import { ItemRow } from "../ItemRow/ItemRow";
+import { AddItem } from '../AddItem/AddItem';
+import { ItemRow } from '../ItemRow/ItemRow';
+import styles from './Inventory.module.css';
 
 export function Inventory() {
   const [items, setItems] = useState([]);
@@ -46,19 +47,28 @@ export function Inventory() {
   }
 
   return (
-    <div style={{ display: "flex", flexDirection: "column", alignItems: "center", textAlign: "left" }}>
-      <AddItem doCreateItem={doCreateItem} />
-
-      <table>
-        {items.length ? items.map((item) => <ItemRow
-          key={item.id}
-          item={item}
-          doCreateItem={doCreateItem}
-          doDeleteItem={doDeleteItem}
-          doUpdateItem={doUpdateItem} />
-        )
+    <div className={styles.tableWrapper}>
+      <table className={styles.table}>
+        <thead>
+          <tr>
+            <td className={styles.col1}>Name</td>
+            <td className={styles.col2}>Price</td>
+            <td className={styles.col3}>Quantity</td>
+            <td className={styles.col4}>Actions</td>
+          </tr>
+        </thead>
+        <tbody>
+          <AddItem doCreateItem={doCreateItem} />
+          {items.length ? items.map((item) => <ItemRow
+            key={item.id}
+            item={item}
+            doCreateItem={doCreateItem}
+            doDeleteItem={doDeleteItem}
+            doUpdateItem={doUpdateItem} />
+          )
           :
-          <div>No items</div>}
+          <tr><td>No items</td></tr>}
+        </tbody>
       </table>
 
     </div>
