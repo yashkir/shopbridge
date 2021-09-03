@@ -34,6 +34,8 @@ A mock api is provided, simply:
 yarn install
 yarn start
 ```
+Or try it on [gh-pages](https://yashkir.github.io/shopbridge/).
+
 ## Development Notes
 
 |Task|Time|
