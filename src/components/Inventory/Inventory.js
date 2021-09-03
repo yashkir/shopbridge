@@ -5,8 +5,8 @@ import {
   updateItem,
   deleteItem
 } from '../../services/api-service';
-import { AddItem } from '../AddItem/AddItem';
-import { ItemRow } from '../ItemRow/ItemRow';
+import AddItem from '../AddItem/AddItem';
+import ItemRow from '../ItemRow/ItemRow';
 import styles from './Inventory.module.css';
 
 export function Inventory() {

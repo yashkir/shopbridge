@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { validateName, validatePrice, validateQuantity } from '../../utils/validators';
 
 
-export function AddItem({ doCreateItem }) {
+export default function AddItem({ doCreateItem }) {
   const [formData, setFormData] = useState({
     name: "",
     price: "",

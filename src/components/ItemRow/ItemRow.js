@@ -3,7 +3,7 @@ import { validateName, validatePrice, validateQuantity } from '../../utils/valid
 import styles from './ItemRow.module.css';
 
 
-export function ItemRow(props) {
+export default function ItemRow(props) {
   const { item, doDeleteItem, doUpdateItem } = props;
   const [activeAction, setActiveAction] = useState(null);
   const [formData, setFormData] = useState({
@@ -71,7 +71,7 @@ export function ItemRow(props) {
     default:
       actions =
         <div>
-          <button onClick={() => setActiveAction(DELETE)}>Delete</button>
+          <button data-testid="delete-button" onClick={() => setActiveAction(DELETE)}>Delete</button>
           <button onClick={() => setActiveAction(EDIT)}>Edit</button>
         </div>;
   }
@@ -118,7 +118,7 @@ export function ItemRow(props) {
 
   return (
     <tr className={styles.itemRow}>
-      <td>
+      <td data-testid="name-cell">
         {item.name}
       </td>
       <td>

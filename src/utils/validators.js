@@ -1,6 +1,5 @@
 function validateName(name) {
   const error = name ? '' : 'Name required';
-  console.log(error);
   return error;
 }
 
@@ -21,4 +20,4 @@ export {
   validateName,
   validatePrice,
   validateQuantity,
-}
+};
