@@ -19,7 +19,8 @@ export default function ItemRow(props) {
   const DELETE = 'DELETE';
   const EDIT = 'EDIT';
 
-  // Validate
+
+  // Validate whenever form data changes
   useEffect(() => {
     const nameError = validateName(formData.name);
     const priceError = validatePrice(formData.price);
@@ -45,8 +46,8 @@ export default function ItemRow(props) {
     setActiveAction(null);
   }
 
+  // Set up the 'actions' cell depending on current action state
   let actions;
-
   switch (activeAction) {
     case DELETE:
       actions =
@@ -76,6 +77,8 @@ export default function ItemRow(props) {
         </div>;
   }
 
+
+  // If we are in edit mode, present a form
   if (activeAction === EDIT) {
     return (
       <tr className={styles.itemRow}>
@@ -116,6 +119,7 @@ export default function ItemRow(props) {
     );
   }
 
+  // If we are not in edit mode present the data
   return (
     <tr className={styles.itemRow}>
       <td data-testid="name-cell">
@@ -132,6 +136,4 @@ export default function ItemRow(props) {
       </td>
     </tr>
   );
-
-
 }
